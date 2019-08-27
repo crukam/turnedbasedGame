@@ -227,7 +227,7 @@ function displayFighterWaiting()
 	selector= whoseturn.name=='firstPlayer'? '#fanjanoWeapon' :'#walunguWeapon';
 	let prevPlayer= whoseturn.name=='firstPlayer'? playerTwo:playerOne;
 	$(selector).empty();
-	$(selector).append('<div class="playerBox" ><b>wait for your turn</div>');
+	$(selector).append('<div class="playerBox" ><b>wait </div>');
 	$(selector).append('<div class="displayWeapon">weapon:'+' ' +prevPlayer.weapon+'</div>');
 	$(selector).append('<div class="displayWeapon">power:'+ ' '+weaponPower(prevPlayer.weapon)+'</div>');
 	extralife= prevPlayer.life-100>0? prevPlayer.life-100:0;
