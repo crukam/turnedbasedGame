@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Turned based game</title>
+<!-- meta tags for search engine optimisation (SEO) -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author"  content="Claude Rukamiza">
+	<meta name="description" content="Project for web developer path on Open Classroom online course">
+	<meta name="keywords" content="html,bootstraap, css, javascript,jquery">
+	
+<!-- loading Bootstraap css-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--custom stylesheet-->
+<link rel= "stylesheet" type="text/css" href="css/myturnedbasedGame.css">
+</head>
+<body>
+		<audio id="mygameMusic">
+			<source src="sound/loop.mp3" type="audio/mpeg">
+		</audio>
+	<div class="gameTitle" align="center"><h1   id="pageTitle">Kwanjo ultimate battle</h1></div>
+	
+	<div class="gameContainer" id="mygameflexContainer" >
+		<div class ="walunguBox" id="walunguFighter" >
+			<div class="fighterTitle" align="center"><h4>Walungu fighter</h4></div>
+			<div class="fighterImage">
+				<img class="walunguImage" src="image/walungufighter.png" alt="walungu fighter">
+			</div>
+			<div class="fighterHealth"><div class="progress-bar" id="walunguHealth">100 % life</div></div>
+			<div class="fighterWeapon" id="walunguWeapon" ></div>
+		</div>
+		<div class="gameareaContainer" id="gameareaGrid">
+				<div class="jumbotron" id="myjumbotron">
+					
+						<p id="displaytest">The Walungu and Fanjano tribes are fighting for resources in the Kwanjo territories.
+						Walungus and Fanjanos has to find the ultimate weapons in the Kwanjo land, when the two warriors’ armies meet the battle began. The  losing tribe
+						will be dominated in  Kwanjo land.</p>
+						<h6    align="center">Rules</h6>
+							<hr width="10%" >
+							<ul>
+								<li>Move vertically or horinzontally.</li>
+								<li>Players can only move 3 tiles up or down, following the horinzontal or vertical axis.</li>
+								<li>Players can not jump a dimmed tiles.</li>
+								<li>Players get extra life by collecting coins or potions</li>
+								<li>Players pick a weapon on their path, and leave their weapon in the tile they pick it from.</li>
+								<li>Players begin the battle if they are in touching tiles.</li>
+							</ul>
+						<div class="gameToolContainer">
+							<div>
+							<h6 align="center">Weapon and Potion</h6>
+							<hr width="20%" >
+							</div>
+							<div class="imggameToolContainer">
+								<div>
+									<img class="imgWeapon" src="image/knife.png"alt="knife">
+									<h6>knife</h6>
+								</div>
+								<div>
+									<img class="imgWeapon" src="image/sai.png"alt="sai">
+									<h6>sai</h6>
+								</div>
+								<div>
+									<img class="imgWeapon" src="image/sore.png"alt="sore">
+									<h6>sore</h6>
+								</div>
+								<div>
+									<img class="imgWeapon" src="image/gun.png"alt="gun">
+									<h6>gun</h6>
+								</div>
+								<div>
+									<img class="imgWeapon" src="image/coin.png"alt="coin">
+									<h6>coin</h6>
+								</div>
+								<div>
+									<img class="imgWeapon" src="image/potion.png"alt="potion">
+									<h6>potion</h6>
+								</div>
+							</div>
+							
+							
+						</div>
+						
+				
+					
+				</div>
+				
+				<div  class="buttonDiv"align="center">
+					<button class="startGamebutton"type="button" id="buttonStart">Start</button>
+				</div>
+				
+						
+		</div>
+		<div class="fanjanoBox" id="fanjanoFighter">
+			<div class="fighterTitle"><h4 align="center">Fanjano fighter</h4></div>
+			<div class="fighterImage" id="fanjanoImagediv">
+				
+					<img  class="fanjanoImage" src="image/fanjanofighter.png"  alt="fanjano fighter">
+				
+			</div>
+			<div class="fighterHealth">
+				<div class="progress-bar" id="fanjanoHealth">100 % life</div>
+				</div>
+			<div class="fighterWeapon" id="fanjanoWeapon"></div>
+		</div>
+		
+	</div>
+	<div class="startContainer">2</div>
+
+
+<!-- loading javascript for Bootstraap-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src= "turnedbasedGame.js"></script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+html,body 
+{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, Sans-serif;
+  font-size:100%;
+  background-color:/* #fff;*/#000000;
+  background-image: url("../image/background.png");
+  background-repeat:repeat;
+}
+body
+{
+	display:flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+hr
+{
+	border:none;
+	border-bottom: 2px solid white;
+	
+	
+}
+
+.gameTitle
+{
+	
+	/*background-color:red ;*/
+	flex:1;
+
+}
+.imgWinner
+{
+	border: 3px solid white;
+	margin: 30px;
+	
+}
+.gameContainer
+{
+	display:flex;
+	/*background-color: white;*/
+	flex-direction: row;
+	/*justify-content: space-evenly;*/
+	flex:10;
+	/*margin-top:0px;*/
+	margin-left:25px;
+	margin-right:25px;
+	margin-bottom:20px;
+	/*height: 1000px;
+	width:1000px;*/
+	
+	/*border:1px solid;*/
+}
+.startContainer
+{
+	/*background-color: green;*/
+	flex:1;
+	
+}
+.walunguBox, .walunguBoxDisabled
+{
+	background-color:#344c36;
+	display:flex;
+	flex-direction:column;
+	flex:2;
+	height:440px;
+	width: 60px;
+	border: 3px solid ;
+	color:white;
+	margin-top:50px;
+}
+.walunguBoxDisabled
+{
+	border: 3px dotted ;
+}
+.gameareaContainer
+{
+	
+	flex:8;
+	margin-left:30px;
+	margin-right:30px;
+	margin-top:0px;
+	/*border:2px solid white;*/
+}
+.fanjanoBox, .fanjanoBoxDisabled
+{
+	background-color: #344c36;
+	display:flex;
+	flex-direction:column;
+	flex:2;
+	height:440px;
+	width: 60px;
+	border: 3px solid ;
+	color:white;
+	margin-top:50px;
+}
+.fanjanoBoxDisabled
+{
+	opacity:0.4;
+	
+	pointer-events:none;
+}
+.playerBox
+{
+	background-color:#344c36;
+	color:red;
+	height:30px;
+	text-align: center;
+	border:2px solid red;
+	
+}
+.fighterTitle
+{
+	
+	flex:1;
+	
+	background-color:#000000;
+}
+.fighterImage
+{
+	flex:5;
+	height:auto;
+	margin-top:auto;
+	
+	
+}
+.fighterHealth
+{
+	/*background-color: green;*/
+	flex:1;
+	/*border-bottom:1px solid;*/
+}
+.fighterWeapon
+{
+	/*background-color: white;*/
+	flex:5;
+}
+.fanjanoImage, .walunguImage
+{
+	max-width: 100%;
+  
+    min-height: 100%;
+	/*margin:2px;*/
+	
+}
+.fanjanoImage
+{
+	background-color:#800000;
+}
+.walunguImage
+{
+	background-color:#7f7f7f;
+}
+
+.progress-bar
+{
+	background-color:green;
+	border:2px solid green;
+}
+.jumbotron
+{
+	background-color: #344c36;
+	color:white;
+	padding-bottom:5px;
+	border-radius: 8%;
+	border: 3px solid;
+	/*margin-bottom:0px;*/
+}
+.imgWeaponContainer
+{
+	display:flex;
+	flex-direction:row;
+	justify-content: space-evenly;
+}
+.gameToolContainer
+{
+	display:flex;
+	flex-direction:column;
+}
+.imggameToolContainer
+{
+	display:flex;
+	flex-direction:row;
+	justify-content: space-evenly;
+	margin-top:20px;
+}
+.buttonDiv
+{
+	margin:10px;
+	
+}
+.buttonFight,.buttonFightDisabled
+{
+	height: 30px;
+	width: 70px;
+	margin-bottom:10px;
+	background-color: #344c36;
+	color:white;
+}
+.buttonReplay
+{
+	height: 40px;
+	width: 150px;
+	margin-bottom:30px;
+	margin-left: 480px;
+	background-color: #344c36;
+	color:white
+	/*justify-content: flex-end;*/
+	/*border: 3px solide white;*/
+	
+}
+.buttonFightDisabled
+{
+	opacity:0.4;
+	/*border: 2px dotted white;*/
+	pointer-events:none;
+}
+.startGamebutton
+{
+	background-color:#344c36;
+	color:white;
+	height:40px;
+	width:120px;
+}
+.gridContainer
+{
+	display:flex;
+	flex-direction:column;
+	/*border:2px solid white;*/
+	height:606px;
+	height:606px;
+	
+}
+.rowContainer
+{
+	display:flex;
+	flex-direction:row;
+	justify-content: center;
+}
+[class*= "cell-"]
+{
+	height:60px;
+	width:60px;
+	background-color:#344c36;
+	border: 2px solid white;
+}
+.cell-dimmed
+{
+	background-image:url('../image/dimmed.png');
+}
+.cell-coin
+{
+	background-color:#fff;
+	background-image:url('../image/coin.png');
+}
+.cell-potion
+{
+    background-color:#fff;
+	background-image:url('../image/potion.png');
+}
+.cell-firstPlayer
+{
+	background-color:#fff;
+	background-image:url('../image/walunguGrid.png');
+}
+.cell-secondPlayer
+{
+	background-color:#fff;
+	background-image:url('../image/fanjanoGrid.png');
+}
+.cell-knife
+{
+	background-color:#fff;
+	background-image:url('../image/knifebis.png');
+	background-repeat:no-repeat;
+}
+.cell-sai
+{
+	
+	background-color:#fff;
+	background-image:url('../image/sai.png');
+	background-repeat:no-repeat;
+}
+.cell-sore
+{
+	
+	background-color:#fff;
+	background-image:url('../image/sore.png');
+	background-repeat:no-repeat;
+}
+.cell-gun
+{
+	background-color:#fff;
+	background-image:url('../image/gun.png');
+	background-repeat:no-repeat;
+}
+.displayWeapon,.displayHealth
+{
+	
+	border:2px solid;
+	text-align: center;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.endGameContainer
+{
+	display:flex;
+	flex-direction:column;
+	/*height:700px;*/
+	/*width:1000px;*/
+	/*border: 3px solid white;*/
+}
+
+
+#pageTitle
+{
+	/*border-bottom:1px solid;*/
+	color:white;
+	background-color:#344c36;
+}
+
+
+
