@@ -1,6 +1,6 @@
 //Global variables
 
-let nb_rows=10,nb_cols=10,dimmeds=[],weapons=[],lifeinhasser=[],whoseturn={};
+let nb_rows=10,nb_cols=10,dimmeds=[],weapons=[],lifeinhasser=[],whoseturn={}, $saveContext;
 let audio= new Audio('sound/loop.mp3'),audio_start= new Audio('sound/start.mp3'),audio_move= new Audio('sound/water_pouring.wav'),audio_celebration= new Audio('sound/celebration.mp3');
 let audio_startFight= new Audio('sound/start_fight.wav'),audio_canon= new Audio('sound/canon.flac'),audio_fanjanoScream= new Audio('sound/aah.mp3'),audio_walunguScream= new Audio('sound/ooh.mp3') ;
 let audio_civilWar= new Audio('sound/war.wav'), win= new Audio('sound/win.mp3'),crowd= new Audio('sound/crowd.wav');
@@ -227,7 +227,7 @@ function displayFighterWaiting()
 	selector= whoseturn.name=='firstPlayer'? '#fanjanoWeapon' :'#walunguWeapon';
 	let prevPlayer= whoseturn.name=='firstPlayer'? playerTwo:playerOne;
 	$(selector).empty();
-	$(selector).append('<div class="playerBox" ><b>wait for your turn</div>');
+	$(selector).append('<div class="playerBox" ><b>wait</div>');
 	$(selector).append('<div class="displayWeapon">weapon:'+' ' +prevPlayer.weapon+'</div>');
 	$(selector).append('<div class="displayWeapon">power:'+ ' '+weaponPower(prevPlayer.weapon)+'</div>');
 	extralife= prevPlayer.life-100>0? prevPlayer.life-100:0;
@@ -282,7 +282,7 @@ function movePlayer(clicked_tile)
  *------------------------------------------------------------------------------*/
 function init()
 {
-	
+	$saveContext =$('body').clone(true);
 	$('#gridId').children().eq(0).children().eq(0).removeClass().addClass("cell-firstPlayer");
 	
 	$('#gridId').children().eq(9).children().eq(9).removeClass().addClass("cell-secondPlayer");
@@ -374,7 +374,7 @@ function keepFighting(clickedButton)
 		$('#shieldFanjanobutton').removeClass().addClass('buttonFight');
 		whoseturn= whoseturn.name=='firstPlayer'? playerTwo:playerOne;
 		whoseturn.life-=weaponPower(whoseturn.weapon);
-		$selector.html(whoseturn.life+'%');
+		$selector.html(whoseturn.life+'%' + 'life');
 		displayFighterbox();
 		displayFighterWaiting();
 		$('#fireWalungubutton').removeClass().addClass('buttonFightDisabled');
@@ -389,7 +389,7 @@ function keepFighting(clickedButton)
 		$('#shieldWalungubutton').removeClass().addClass('buttonFight');
 		whoseturn= whoseturn.name=='firstPlayer'? playerTwo:playerOne;
 		whoseturn.life-=weaponPower(whoseturn.weapon);
-		$selector.html(whoseturn.life+'%');
+		$selector.html(whoseturn.life+'%'+ 'life');
 		displayFighterbox();
 		displayFighterWaiting();
 		$('#fireFanjanobutton').removeClass().addClass('buttonFightDisabled');
@@ -471,16 +471,26 @@ function endGame()
 	playerOne.life > 0?  $('.buttonReplay').css({'background-color':'#7F7F7F','color':'white'}): $('.buttonReplay').css({'background-color':'#880015','color':'white'});
 	
 	 $('#mygameflexContainer div:first-child').on('click','.buttonReplay',function(){
-		$('#mygameflexContainer').empty();
-		$("body").css({'background-image':'url("../image/background.png")'})
-		audio_start.play();
-		createGrid();
-		init();
-		whoseturn=playerOne;
-		displayFighterbox();
-		displayFighterWaiting();
+		$('body').remove();
+		$('html').append($saveContext);
+		$('body').css({'background-image':'url("../image/background.png")'})
+		crowd.pause();
+	    win.pause();
+		startGame ();
+		playerOne.position='0_0', playerOne.weapon='knife',playerOne.life=100;
+		playerTwo.position='9_9', playerTwo.weapon='knife',playerTwo.life=100;
+		listenClick();
 	 });
 	
+}
+function startGame ()
+{
+	audio_start.play();
+	createGrid();
+	init();
+	whoseturn=playerOne;
+	displayFighterbox();
+	displayFighterWaiting();
 }
 /*-------------------------------------------------------------*
  * function: run when players are fighting                     *
@@ -501,7 +511,7 @@ function playFight()
 	$('#pageTitle').html('Walungus fighting Fanjanos');
 	setTimeout(function(){
 		audio_start.play();
-		$('#mygameflexContainer').css({'height':'1000px','width':'1000px','marginLeft':'300px'});
+		$('#mygameflexContainer').css({'height':'1000px','width':'1000px','marginLeft':'150px'});
 		$('#fanjanoFighter').css('flex','6');
 		$('#walunguFighter').css('flex','6');
 		$('#gameareaGrid').remove();
@@ -579,7 +589,7 @@ function playClickonTile(id,extralife)
 		displayFighterbox();
 		displayFighterWaiting();
 		selector= whoseturn.name=='firstPlayer'? '#fanjanoWeapon' :'#walunguWeapon';
-		$(selector).append('<div class="playerBox" > Wao potion'+' '+ extralife+' '+ 'extra life!!</div>');
+		$(selector).append('<div class="playerBox" >'+' '+ extralife+' '+ 'extra life!!</div>');
 	}
 }
 /*-----------------------------------------------------------------------------------------------------*
@@ -599,19 +609,8 @@ function playClickonWeapon(id,weapon)
 	displayFighterbox();
 	displayFighterWaiting();
 }
-//main function
-$(document).ready(function()
+function listenClick()
 {
-	let prevPosition=' ';
-	// start of the game
-	$('#buttonStart').click(function(){
-		audio_start.play();
-		createGrid();
-		init();
-		whoseturn=playerOne;
-		displayFighterbox();
-		displayFighterWaiting();
-	});
 	//listen for a click on a free cell
 	$('#gameareaGrid').on('click','.cell-',function(){
 		if(movePlayer(this.id) && !playerTouching())
@@ -666,6 +665,16 @@ $(document).ready(function()
 	  if(playerTouching())
 		 playFight();
 	});
+}
+//main function
+$(document).ready(function()
+{
+	let prevPosition=' ';
+	// start of the game
+	$('#buttonStart').click(function(){
+		startGame();
+	});
+	listenClick();
 });
 
 	

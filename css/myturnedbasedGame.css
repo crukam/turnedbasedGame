@@ -49,7 +49,7 @@ hr
 	/*height: 1000px;
 	width:1000px;*/
 	
-	/*border:1px solid;*/
+	border:1px solid;
 }
 .startContainer
 {
@@ -80,7 +80,7 @@ hr
 	margin-left:30px;
 	margin-right:30px;
 	margin-top:0px;
-	/*border:2px solid white;*/
+	border:2px solid white;
 }
 .fanjanoBox, .fanjanoBoxDisabled
 {
